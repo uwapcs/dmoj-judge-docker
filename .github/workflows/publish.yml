@@ -1,0 +1,18 @@
+name: Publish Docker
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+      with:
+        submodules: recursive
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        name: uwapcs/dmoj-judge-docker/dmoj-judge
+        # GitHub doesn't check username if you use an access token
+        username: unused
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+        snapshot: true
