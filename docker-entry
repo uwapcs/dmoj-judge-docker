@@ -1,0 +1,2 @@
+#!/bin/sh
+/usr/bin/tini -- /judge/.docker/entry run -p 9999 -c /problems/judge.yml site judge0 $(cat /run/secrets/judge_key)
